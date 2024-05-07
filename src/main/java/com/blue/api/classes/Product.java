@@ -1,9 +1,14 @@
-package com.blue.api.entity;
+package com.blue.api.classes;
+
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
-
+@Entity
+@Table
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private float price;
