@@ -2,11 +2,10 @@ package com.blue.api.controllers;
 
 import com.blue.api.classes.Product;
 import com.blue.api.services.ProductService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,14 +20,23 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping(path="/")
+    @GetMapping(path="/get")
     public List<Product> getProducts(){
         return productService.getProducts();
     }
 
-//    @PostMapping
-    public void createProduct(Product product){
-        this.productService.createProduct(product);
+    @PostMapping(path="/create")
+    public ResponseEntity<Object> createProduct(@RequestBody Product product){
+        return this.productService.createProduct(product);
     }
 
+    @PutMapping(path="/update")
+    public ResponseEntity<Object> updateProduct(@RequestBody Product product){
+        return this.productService.createProduct(product);
+    }
+
+    @DeleteMapping(path="/delete/{productId}")
+    public ResponseEntity<Object> deleteProduct(@PathVariable("productId") Long productId){
+        return this.productService.deleteProduct(productId);
+    }
 }

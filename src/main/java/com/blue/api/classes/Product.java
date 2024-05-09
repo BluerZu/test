@@ -9,7 +9,8 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
+    @Column(unique = true)
     private String name;
     private float price;
     private LocalDate expDate;
@@ -20,7 +21,7 @@ public class Product {
     }
 
     // Constructor con parámetros
-    public Product(long id, String name, float price, LocalDate expDate, int stock) {
+    public Product(Long id, String name, float price, LocalDate expDate, int stock) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -29,7 +30,7 @@ public class Product {
     }
 
     // Getters
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -50,7 +51,7 @@ public class Product {
     }
 
     // Setters
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

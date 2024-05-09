@@ -22,9 +22,9 @@ public class ApiApplication {
 		SpringApplication.run(ApiApplication.class, args);
 	}
 
-	@PostConstruct
+//	@PostConstruct
 	public void init() {
-		productService.createProduct(new Product(1, "Manzana", 0.99f, LocalDate.of(2024, 4, 29), 100));
+		productService.createProduct(new Product(1L, "Manzana", 0.99f, LocalDate.of(2024, 4, 29), 100));
 	}
 }
 
